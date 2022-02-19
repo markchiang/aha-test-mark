@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "hello",
     "rest_framework",
+    "oauth2_provider",
 ]
 
 MIDDLEWARE = [
@@ -116,5 +117,7 @@ USE_TZ = True
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = "/static/"
+
+LOGIN_URL='/admin/login/'
 
 django_heroku.settings(locals())
