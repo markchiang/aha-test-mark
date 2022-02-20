@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "hello",
     "rest_framework",
     "oauth2_provider",
+    "social.apps.django_app.default",
+    "social_django",
 ]
 
 MIDDLEWARE = [
@@ -67,13 +69,37 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "social.apps.django_app.context_processors.backends",
+                "social.apps.django_app.context_processors.login_redirect",
+                "social_django.context_processors.backends",
+                "social_django.context_processors.login_redirect",
             ]
         },
     }
 ]
 
-WSGI_APPLICATION = "gettingstarted.wsgi.application"
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.google.GooglePlusAuth',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
+SOCIAL_AUTH_URL_NAMESPACE = 'social'
+SOCIAL_AUTH_GOOGLE_PLUS_KEY = '...'
+SOCIAL_AUTH_GOOGLE_PLUS_SECRET = '...'
+SOCIAL_AUTH_FACEBOOK_APP_KEY = os.environ.get('SOCIAL_AUTH_FACEBOOK_APP_KEY')
+SOCIAL_AUTH_FACEBOOK_APP_SECRET = os.environ.get('SOCIAL_AUTH_FACEBOOK_APP_SECRET')
+SOCIAL_AUTH_FACEBOOK_APP_NAMESPACE = ''
+SOCIAL_AUTH_FACEBOOK_KEY = ''
+SOCIAL_AUTH_FACEBOOK_SECRET = ''
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+    'locale': 'ru_RU',
+    'fields': 'id, name, email, age_range'
+}
 
+WSGI_APPLICATION = "gettingstarted.wsgi.application"
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
