@@ -5,7 +5,7 @@
 			{% if user.is_authenticated %}
 			Welcome back, {{ user.username }}
 			    {% for auser in users %}
-			    <li>{{ auser }}</li>
+			    <li>user:{{ auser }} date_joined:{{ auser.date_joined }} last_login:{{ auser.last_login}}</li>
 			    {% endfor %}
 			{% else %}
 			<a href="/admin/login/?next=/hello/">Use Password</a><br/>
