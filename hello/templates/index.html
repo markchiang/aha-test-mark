@@ -4,8 +4,12 @@
 		<div>
 			{% if user.is_authenticated %}
 			Welcome back, {{ user.username }}
+			    {% for auser in users %}
+			    <li>{{ auser }}</li>
+			    {% endfor %}
 			{% else %}
-			<a href="{% url "social:begin" "google-oauth2" %}">Connect with Google+</a>
+			<a href="/admin/login/?next=/hello/">Use Password</a><br/>
+			<a href="{% url "social:begin" "google-oauth2" %}">Connect with Google+</a><br/>
 			<a href="{% url "social:begin" "facebook" %}?next={{ request.path }}">Connect with Facebook</a>
 			{% endif %}
 		</div>

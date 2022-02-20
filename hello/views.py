@@ -2,11 +2,13 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .models import Greeting
+from django.contrib.auth.models import User
 
 # Create your views here.
 def index(request):
     # return HttpResponse('Hello from Python!')
-    return render(request, "index.html")
+    users = User.objects.all()
+    return render(request, "index.html", {'users':users})
 
 
 def db(request):
