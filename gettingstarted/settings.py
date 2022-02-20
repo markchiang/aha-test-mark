@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "oauth2_provider",
     "social.apps.django_app.default",
     "social_django",
+    'drf_yasg',
 ]
 
 MIDDLEWARE = [
