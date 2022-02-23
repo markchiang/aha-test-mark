@@ -10,7 +10,7 @@ from django.urls import re_path
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
+#router.register(r'groups', views.GroupViewSet)
 import hello.views
 
 schema_view = get_schema_view(
