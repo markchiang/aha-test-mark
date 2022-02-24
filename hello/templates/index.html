@@ -3,7 +3,9 @@
 		User Database Dashboard
 		<div>
 			{% if user.is_authenticated %}
-			Welcome back, {{ user.username }}. <a href="/admin/password_change/?next=/hello/">Change password</a><br/><br/>
+			Welcome back, {{ user.username }}. 
+			<a href="/admin/password_change/?next=/hello/">Change password</a> 
+			<a href="{% url 'logout' %}">Logout</a><br/>
 			We have {{users|length}} user(s).<br/>
 			    {% for auser in users %}
 			    <ul>
@@ -12,7 +14,7 @@
 			    {% endfor %}
 			{% else %}
 			<a href="/admin/login/?next=/hello/">Use Password</a><br/>
-			<a href="{% url "social:begin" "google-oauth2" %}">Connect with Google+</a><br/>
+			<a href="{% url "social:begin" "google-oauth2" %}?next={{ request.path }}">Connect with Google</a><br/>
 			<a href="{% url "social:begin" "facebook" %}?next={{ request.path }}">Connect with Facebook</a>
 			{% endif %}
 		</div>
