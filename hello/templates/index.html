@@ -1,11 +1,14 @@
 <html>
 	<body>
-		Demo
+		User Database Dashboard
 		<div>
 			{% if user.is_authenticated %}
-			Welcome back, {{ user.username }}
+			Welcome back, {{ user.username }}. <a href="/admin/password_change/?next=/hello/">Change password</a><br/><br/>
+			We have {{users|length}} user(s).<br/>
 			    {% for auser in users %}
-			    <li>user:{{ auser }} date_joined:{{ auser.date_joined }} last_login:{{ auser.last_login}}</li>
+			    <ul>
+			    <li>user:{{ auser }}<ul><li>times logged:{{auser.times}}</li> <li>date_joined:{{ auser.date_joined }}</li> <li>last_login:{{ auser.last_login}}</li></ul></li>
+			    </ul>
 			    {% endfor %}
 			{% else %}
 			<a href="/admin/login/?next=/hello/">Use Password</a><br/>
