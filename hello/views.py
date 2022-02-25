@@ -11,13 +11,15 @@ from datetime import datetime, timedelta
 def index(request):
     # return HttpResponse('Hello from Python!')
     users = User.objects.all()
-    times = Login.objects.filter(user=request.user).count
+    if not request.user.is_authenticated:
+        times = 0
+    else:
+        times = Login.objects.filter(user=request.user).count
     year, week, day = now().isocalendar()
     today = Login.objects.filter(date__day=now().day).values("user").distinct().count
     sessions = Session.objects.all().filter(expire_date__gte=datetime.now()-timedelta(days=7)).count
     week = Login.objects.filter(date__week=week).values("user").distinct().count
     return render(request, "index.html", {'users':users, 'times':times, 'today':today, 'week':week, 'sessions':sessions})
-
 
 def db(request):
 
