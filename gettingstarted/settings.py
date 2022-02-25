@@ -36,7 +36,7 @@ INSTALLED_APPS = [
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
-    "django.contrib.sessions",
+    "user_sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "hello",
@@ -52,14 +52,15 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "django.contrib.sessions.middleware.SessionMiddleware",
+    "user_sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
+SESSION_ENGINE = 'user_sessions.backends.db'
 ROOT_URLCONF = "gettingstarted.urls"
 
 TEMPLATES = [
@@ -155,4 +156,6 @@ STATIC_URL = "/static/"
 
 LOGIN_URL='/admin/login/'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+LOGOUT_REDIRECT_URL='/hello/'
+DEFAULT_AUTO_FIELD='django.db.models.BigAutoField'
 django_heroku.settings(locals())

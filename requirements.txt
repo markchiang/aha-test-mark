@@ -10,6 +10,7 @@ django-heroku==0.3.1
 django-login-history==0.1.1
 django-oauth-toolkit==1.7.0
 django-password-validators==1.6.1
+django-user-sessions==1.7.1
 djangorestframework==3.13.1
 drf-history==1.0.1
 drf-yasg==1.20.0
