@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'drf_yasg',
     'django_password_validators',
     'django_password_validators.password_history',
+    'django_login_history',
 ]
 
 MIDDLEWARE = [
